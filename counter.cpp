@@ -1,8 +1,8 @@
 #include "counter.h"
+#include "ofMain.h"
 
 //--------------------------------------------------------------
 void counter::setup(){
-    ofBackground(255,255,255);
     drmCounts = 0;
 
 }

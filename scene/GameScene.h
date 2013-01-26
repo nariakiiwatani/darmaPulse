@@ -4,6 +4,7 @@
 #include "DarmaPlayer.h"
 #include "Arduino.h"
 #include "soundItcan.h"
+#include "counter.h"
 
 class GameScene : public SceneBase
 {
@@ -23,7 +24,9 @@ private:
     Arduino arduino_;
     soundItcan sound_;
 	DarmaPlayer player_;
+    counter counter_;
     
+    bool mouse_presed_;
 };
 
 /* EOF */

@@ -108,7 +108,7 @@ void soundItcan::update(){
             }
             
         } else {
-            soundE.play();
+//            soundE.play();
         }
     }
     
