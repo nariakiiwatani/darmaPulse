@@ -4,10 +4,16 @@ void GameScene::setup()
 {
 	SceneBase::setup();
 	player_.setup();
-
+    arduino_.calibrate();
+    sound_.setup();
 }
 void GameScene::update()
 {
+    if(arduino_.isBeating()) {
+        
+    }
+    sound_.update();
+    player_.update();
 	if(player_.isGoal()) {
 		next_scene_ = SCENE_ID_RESULT;
 	}
@@ -15,7 +21,7 @@ void GameScene::update()
 
 void GameScene::draw()
 {
-
+    player_.draw();
 }
 
 //--------------------------------------------------------------

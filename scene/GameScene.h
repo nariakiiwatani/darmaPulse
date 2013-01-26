@@ -1,7 +1,9 @@
 #pragma once
 
 #include "SceneBase.h"
-#include "Player.h"
+#include "DarmaPlayer.h"
+#include "Arduino.h"
+#include "soundItcan.h"
 
 class GameScene : public SceneBase
 {
@@ -18,7 +20,10 @@ public:
 	void mouseReleased(int x, int y, int button);
 
 private:
-	Player player_;
+    Arduino arduino_;
+    soundItcan sound_;
+	DarmaPlayer player_;
+    
 };
 
 /* EOF */
