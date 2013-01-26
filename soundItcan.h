@@ -18,7 +18,7 @@ public:
     void setup();
     bool mousePressed;
     
-    int count=0;
+    int count;
     
     ofSoundPlayer sound0;
     ofSoundPlayer sound1;
