@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ResultBase.h"
+#include "ResultScene.h"
 
 void ResultScene::update()
 {

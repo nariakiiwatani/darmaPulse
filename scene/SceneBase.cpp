@@ -4,7 +4,7 @@
 
 void SceneBase::setup()
 {
-	next_scene_ = SCENE_ID_CURRENT;
+	next_scene_ = SCENE_CURRENT;
 }
 
 /* EOF */

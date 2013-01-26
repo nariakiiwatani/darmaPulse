@@ -1,5 +1,3 @@
-#pragma once
-
 #include "SceneManager.h"
 #include "SceneBase.h"
 #include "TitleScene.h"
@@ -18,8 +16,9 @@ void SceneManager::setup()
 void SceneManager::update()
 {
 	current_->update();
-	if(current_->getNextSceneId() != SCENE_ID_CURRENT) {
-		current_ = scenes_[SCENE_ID_CURRENT];
+    SceneId next = current_->getNextSceneId();
+	if(next != SCENE_CURRENT) {
+		current_ = scenes_[next];
 	}
 }
 void SceneManager::draw()

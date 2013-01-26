@@ -2,7 +2,7 @@
 
 #include "SceneBase.h"
 
-class ResultScene
+class ResultScene : public SceneBase
 {
 public:
 	void update();

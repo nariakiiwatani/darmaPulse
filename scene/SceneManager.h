@@ -19,7 +19,8 @@ public:
 	void draw();
 
 private:
-	SceneBase* scenes_[SCENE_ID_NUM], current_;
+	SceneBase* scenes_[SCENE_ID_NUM];
+    SceneBase* current_;
 };
 
 /* EOF */
