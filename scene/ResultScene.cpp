@@ -1,5 +1,3 @@
-#pragma once
-
 #include "ResultScene.h"
 
 void ResultScene::setup()

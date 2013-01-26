@@ -1,5 +1,3 @@
-#pragma once
-
 #include "SceneBase.h"
 
 void SceneBase::setup()

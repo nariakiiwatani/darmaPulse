@@ -26,4 +26,34 @@ void SceneManager::draw()
 	current_->draw();
 }
 
+//--------------------------------------------------------------
+void SceneManager::keyPressed(int key){
+	current_->keyPressed(key);
+}
+
+//--------------------------------------------------------------
+void SceneManager::keyReleased(int key){
+	current_->keyReleased(key);
+}
+
+//--------------------------------------------------------------
+void SceneManager::mouseMoved(int x, int y ){
+	current_->mouseMoved(x,y);
+}
+
+//--------------------------------------------------------------
+void SceneManager::mouseDragged(int x, int y, int button){
+	current_->mouseDragged(x,y,button);
+}
+
+//--------------------------------------------------------------
+void SceneManager::mousePressed(int x, int y, int button){
+	current_->mousePressed(x,y,button);
+}
+
+//--------------------------------------------------------------
+void SceneManager::mouseReleased(int x, int y, int button){
+	current_->mouseReleased(x,y,button);
+}
+
 /* EOF */

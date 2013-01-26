@@ -1,5 +1,3 @@
-#pragma once
-
 #include "TitleScene.h"
 
 void TitleScene::setup()
