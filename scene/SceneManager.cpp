@@ -11,7 +11,7 @@ void SceneManager::setup()
 	scenes_[0] = new TitleScene();
 	scenes_[1] = new GameScene();
 	scenes_[2] = new ResultScene();
-	current_ = scenes_[0];
+	current_ = scenes_[SCENE_ID_GAME];
 	current_->setup();
 }
 
