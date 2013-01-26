@@ -2,6 +2,11 @@
 
 #include "GameScene.h"
 
+void GameScene::setup()
+{
+	SceneBase::setup();
+
+}
 void GameScene::update()
 {
 

@@ -5,7 +5,7 @@
 class SceneBase
 {
 public:
-	void setup();
+	virtual void setup();
 	virtual void update(){}
 	virtual void draw(){}
 	SceneId getNextSceneId(){ return next_scene_; }
