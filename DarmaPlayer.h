@@ -1,5 +1,12 @@
 #pragma once
 
+#define NOUSE_CAMERA
+
+#ifndef NOUSE_CAMERA
+#include "ofxOpenNI.h"
+#include "ofTexture.h"
+#endif // NOUSE_CAMERA
+
 class DarmaPlayer
 {
 public:
@@ -16,6 +23,16 @@ public:
 private:
 	bool is_moving_;
 	bool is_goal_;
+
+#ifndef NOUSE_CAMERA
+	ofxOpenNIContext openni_;
+	ofxImageGenerator image_;
+	ofxDepthGenerator depth_;
+	ofxUserGenerator user_;
+
+	ofTexture user_tex_;
+	ofPixels user_pix_;
+#endif // NOUSE_CAMERA
 };
 
 /* EOF */
