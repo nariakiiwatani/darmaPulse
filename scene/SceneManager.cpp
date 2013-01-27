@@ -13,6 +13,7 @@ void SceneManager::setup()
 	scenes_[3] = new GameoverScene();
 	current_ = scenes_[SCENE_ID_GAME];
 	current_->setup();
+    current_->ready();
 }
 
 void SceneManager::update()
@@ -21,6 +22,7 @@ void SceneManager::update()
     SceneId next = current_->getNextSceneId();
 	if(next != SCENE_CURRENT) {
 		current_ = scenes_[next];
+        current_->ready();
 	}
 }
 void SceneManager::draw()

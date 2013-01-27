@@ -10,6 +10,7 @@ class GameScene : public SceneBase
 {
 public:
 	void setup();
+    void ready();
 	void update();
 	void draw();
 

@@ -2,12 +2,20 @@
 
 void GameScene::setup()
 {
-	SceneBase::setup();
 	player_.setup();
-    arduino_.calibrate();
     sound_.setup();
     counter_.setup();
+}
+
+void GameScene::ready()
+{
+    SceneBase::ready();
     mouse_presed_ = false;
+    player_.setGameover(false);
+    player_.setMoving(false);
+    counter_.drmCounts = -1;
+    sound_.mousePressed = false;
+    arduino_.calibrate();
 }
 void GameScene::update()
 {
@@ -22,14 +30,14 @@ void GameScene::update()
 	if(player_.isGoal()) {
 		next_scene_ = SCENE_ID_RESULT;
 	}
-    else if(player_.isGameover()) {
-		next_scene_ = SCENE_ID_GAMEOVER;
-    }
     else if(player_.isMoving() && counter_.drmCounts == 9) {
         player_.setGameover(true);
     }
+    if(player_.isGameover()) {
+		next_scene_ = SCENE_ID_GAMEOVER;
+    }
+    
     mouse_presed_ = false;
-
     player_.setMoving(false);
 }
 

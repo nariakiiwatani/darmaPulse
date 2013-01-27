@@ -14,4 +14,8 @@ void TitleScene::draw()
 
 }
 
+void TitleScene::mousePressed(int x, int y, int button){
+    next_scene_ = SCENE_ID_GAME;
+}
+
 /* EOF */
