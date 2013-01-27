@@ -19,6 +19,9 @@ public:
     bool mousePressed;
     
     int count;
+    int i;
+    
+    ofSoundPlayer sound[10][2];
     
     ofSoundPlayer sound0;
     ofSoundPlayer sound1;
