@@ -11,6 +11,7 @@ void GameScene::ready()
 {
     SceneBase::ready();
     mouse_presed_ = false;
+    player_.setGoal(false);
     player_.setGameover(false);
     player_.setMoving(false);
     counter_.drmCounts = -1;
@@ -53,6 +54,9 @@ void GameScene::keyPressed(int key){
     if(key == ' ') {
         arduino_.calibrate();
     }
+    else if(key == OF_KEY_RETURN) {
+        player_.setGoal(true);
+    }
 }
 
 //--------------------------------------------------------------
@@ -61,7 +65,9 @@ void GameScene::keyReleased(int key){
 
 //--------------------------------------------------------------
 void GameScene::mouseMoved(int x, int y ){
+#ifdef NOUSE_CAMERA
     player_.setMoving(true);
+#endif // NOUSE_CAMERA
 }
 
 //--------------------------------------------------------------
