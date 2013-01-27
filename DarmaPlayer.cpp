@@ -1,9 +1,11 @@
 #include "DarmaPlayer.h"
+#include "ofMain.h"
 
 void DarmaPlayer::setup()
 {
 	is_moving_ =
-	is_goal_ = false;
+	is_goal_ =
+	is_gameover_ = false;
 
 #ifndef NOUSE_CAMERA
 	openni_.setup();
