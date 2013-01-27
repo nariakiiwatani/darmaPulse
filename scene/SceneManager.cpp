@@ -3,12 +3,14 @@
 #include "TitleScene.h"
 #include "GameScene.h"
 #include "ResultScene.h"
+#include "GameoverScene.h"
 
 void SceneManager::setup()
 {
 	scenes_[0] = new TitleScene();
 	scenes_[1] = new GameScene();
 	scenes_[2] = new ResultScene();
+	scenes_[3] = new GameoverScene();
 	current_ = scenes_[SCENE_ID_GAME];
 	current_->setup();
 }

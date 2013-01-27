@@ -22,7 +22,15 @@ void GameScene::update()
 	if(player_.isGoal()) {
 		next_scene_ = SCENE_ID_RESULT;
 	}
+    else if(player_.isGameover()) {
+		next_scene_ = SCENE_ID_GAMEOVER;
+    }
+    else if(player_.isMoving() && counter_.drmCounts == 9) {
+        player_.setGameover(true);
+    }
     mouse_presed_ = false;
+
+    player_.setMoving(false);
 }
 
 void GameScene::draw()
@@ -45,6 +53,7 @@ void GameScene::keyReleased(int key){
 
 //--------------------------------------------------------------
 void GameScene::mouseMoved(int x, int y ){
+    player_.setMoving(true);
 }
 
 //--------------------------------------------------------------
