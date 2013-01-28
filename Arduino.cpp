@@ -10,24 +10,27 @@
 #include "Arduino.h"
 
 Arduino::Arduino(){
-	ard.connect("/dev/tty.usbmodem411", 57600);
+	ard.connect("COM4", 57600);
 	ofAddListener(ard.EInitialized, this, &Arduino::setup );
 	calibrateFlag = false;
 	bSetupArduino = false;
 	calCount = 0;
 	threshold = 0;
+	ignoreCount = 0;
 	pResult = false;
 }
 void Arduino::setup(const int & version) {
 	ofRemoveListener(ard.EInitialized, this, &Arduino::setup);
 	
     ard.sendAnalogPinReporting(0, ARD_ANALOG);
+    ard.sendAnalogPinReporting(1, ARD_ANALOG);
     bSetupArduino = true;
 }
 
 bool Arduino::isBeating(){
 	ard.update();
-	int val = ard.getAnalog(0);
+	raw[0] = ard.getAnalog(0);
+	int val = raw[0];
 	
 	if (calibrateFlag){
 		if(calCount < BUFFER_SIZE) {
@@ -43,20 +46,25 @@ bool Arduino::isBeating(){
 			calibrateFlag = false;
 		}
 	}
-	cout << val - threshold << endl;
+	cout << (int)(val - threshold) << endl;
 	
 	ignoreCount++;
 	bool rslt = val > threshold;
 	
 	
-	if(ignoreCount<30){
+	if(ignoreCount<10){
 		return false;
 	}else{
 		if(rslt) ignoreCount = 0;
 		return rslt;
 	}
-	
-	
+}
+
+bool Arduino::isGameClear()
+{
+	raw[1] = ard.getAnalog(1);
+
+	return raw[1] > 500;
 }
 
 void Arduino::calibrate(){
@@ -65,4 +73,19 @@ void Arduino::calibrate(){
 	}
 	calCount = 0;
 	calibrateFlag = true;
+}
+
+int Arduino::getRawData(int index)
+{
+	return raw[index];
+}
+int Arduino::getCalibratedData(int index)
+{
+	if(index==0) {
+		return raw[0] - threshold;
+	}
+	else if(index==1) {
+		return raw[1]-400;
+	}
+	return 0;
 }

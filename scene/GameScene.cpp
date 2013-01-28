@@ -14,7 +14,7 @@ void GameScene::ready()
     player_.setGoal(false);
     player_.setGameover(false);
     player_.setMoving(false);
-    counter_.drmCounts = -1;
+	counter_.setup();
     sound_.mousePressed = false;
     arduino_.calibrate();
 }
@@ -25,10 +25,19 @@ void GameScene::update()
         sound_.mousePressed = true;
         sound_.count = counter_.drmCounts;
     }
+
     counter_.update();
+	if(counter_.drmCounts  < 9) {
+		counter_.setCircleAlpha(255-(arduino_.getCalibratedData(0)*20.f));
+	}
+	else {
+		counter_.setCircleAlpha(255);
+	}
+
     sound_.update();
-    player_.update();
-	if(player_.isGoal()) {
+
+	player_.update();
+	if(arduino_.isGameClear()) {
 		next_scene_ = SCENE_ID_RESULT;
 	}
     else if(player_.isMoving() && counter_.drmCounts == 9) {

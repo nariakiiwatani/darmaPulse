@@ -14,6 +14,7 @@ void DarmaPlayer::setup()
 	user_.setup(&openni_);
 	openni_.setMirror(true);
 	depth_.setDepthColoring(COLORING_GREY);
+	user_.setMaxNumberOfUsers(2);
 //	user_.setUseMaskPixels(true);
 	user_pix_.allocate(image_.getTexture()->getWidth(), image_.getTexture()->getHeight(), OF_PIXELS_RGBA);
 	user_tex_.allocate(user_pix_);
@@ -38,10 +39,7 @@ void DarmaPlayer::update()
 			int x = i%w;
 			int y = i/w;
 			if(dph_pix[i] == 0) {
-				if(user_pix_.getColor(x, y) != ofColor(0,0,0,0)) {
-					++move_pix;
-					user_pix_.setColor(x, y, ofColor(0,0,0,0));
-				}
+				user_pix_.setColor(x, y, ofColor(0,0,0,0));
 			}
 			else {
 				++valid_pix;
@@ -55,7 +53,7 @@ void DarmaPlayer::update()
 				user_pix_.setColor(x, y, next);
 			}
 		}
-		is_moving_ = move_pix/(float)(valid_pix) > 0.2f;
+		is_moving_ = move_pix/(float)(valid_pix) > 0.03f;
 	}
 	else {
 		is_moving_ = false;

@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	ofEnableAlphaBlending();
 	manager_.setup();
 }
 

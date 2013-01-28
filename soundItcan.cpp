@@ -15,12 +15,12 @@ void soundItcan::setup(){
     for (i=0; i<10 ;i++){
         sound[i][0].loadSound("sounds/"+ofToString(i)+".wav");
         sound[i][1].loadSound("sounds/0"+ofToString(i)+".wav");
-        ofLog();
+//        ofLog();
     }
     
     for (i=0; i<10 ;i++){
-        sound[i][0].setVolume(0.75f);
-        sound[i][1].setVolume(0.75f);
+        sound[i][0].setVolume(1);
+        sound[i][1].setVolume(1);
     }
 
     for (i=0; i<10 ;i++){
@@ -52,7 +52,7 @@ void soundItcan::update(){
     if (mousePressed){
         
         if (count < 10 && count >= 0){
-        ofLog(OF_LOG_WARNING ,ofToString("countは"+count));
+//        ofLog(OF_LOG_WARNING ,ofToString("countは"+count));
         int j = ofRandom(2);
         sound[count][j].play();
    

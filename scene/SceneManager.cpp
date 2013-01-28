@@ -7,13 +7,23 @@
 
 void SceneManager::setup()
 {
-	scenes_[0] = new TitleScene();
-	scenes_[1] = new GameScene();
-	scenes_[2] = new ResultScene();
-	scenes_[3] = new GameoverScene();
+	sound_.loadSound("horor.wav");
+	sound_.setVolume(0.3f);
+	sound_.setLoop(true);
+	sound_.play();
+
+	scenes_[SCENE_ID_TITLE] = new TitleScene();
+	scenes_[SCENE_ID_GAME] = new GameScene();
+	scenes_[SCENE_ID_RESULT] = new ResultScene();
+	scenes_[SCENE_ID_GAMEOVER] = new GameoverScene();
 	current_ = scenes_[SCENE_ID_GAME];
 	current_->setup();
     current_->ready();
+
+//	scenes_[SCENE_ID_TITLE]->setBG();
+//	scenes_[SCENE_ID_GAME]->setBG();
+//	scenes_[SCENE_ID_RESULT]->setBG();
+//	scenes_[SCENE_ID_GAMEOVER]->setBG();
 }
 
 void SceneManager::update()
@@ -27,6 +37,7 @@ void SceneManager::update()
 }
 void SceneManager::draw()
 {
+	current_->drawBG();
 	current_->draw();
 }
 

@@ -26,12 +26,17 @@ private:
 	
 	bool pResult;
 	int ignoreCount;
-	
+
 	float threshold;
+
+	int raw[2];
 public:
 	Arduino();
 	bool isBeating();
 	void calibrate();
+	bool isGameClear();
+	int getRawData(int pinindex);
+	int getCalibratedData(int pinindex);
 };
 
 #endif

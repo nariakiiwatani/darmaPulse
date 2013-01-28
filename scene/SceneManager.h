@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ofSoundPlayer.h"
+
 enum SceneId {
 	SCENE_ID_TITLE,
 	SCENE_ID_GAME,
@@ -29,6 +31,7 @@ public:
 private:
 	SceneBase* scenes_[SCENE_ID_NUM];
     SceneBase* current_;
+	ofSoundPlayer sound_;
 };
 
 /* EOF */
