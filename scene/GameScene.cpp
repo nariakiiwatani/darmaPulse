@@ -37,7 +37,7 @@ void GameScene::update()
     sound_.update();
 
 	player_.update();
-	if(arduino_.isGameClear()) {
+	if(arduino_.isGameClear() || player_.isGoal()) {
 		next_scene_ = SCENE_ID_RESULT;
 	}
     else if(player_.isMoving() && counter_.drmCounts == 9) {
